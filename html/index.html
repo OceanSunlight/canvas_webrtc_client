@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>WebRtc Client</title>
+<script src="adapter.js"></script>
+<script src="peerconnection.js"></script>
+<script src="communication_server.js"></script>
+</head>
+<body>
+Server: <input type="text" id="server" value="http://10.130.66.19:8888" /><br>
+<input type="checkbox" id="loopback" title = "Just send received messages right back."/> Loopback
+<input type="checkbox" id="chatmode" checked="checked" title = "Chatting messages are spread out."/> ChatMode
+<input type="checkbox" id="datachannel" onclick="sendpathchange()" title = "Interact messages by WebRtc DataChannel."/> DataChannel<br>
+Your name: <input type="text" id="local" value="my_name"/>
+<button id="connect" onclick="connect();">Connect</button>
+<button disabled="true" id="disconnect"
+        onclick="disconnect();">Disconnect</button>
+<br>
+<table><tr><td>
+Target peer id: <input type="text" id="peer_id" size="3"/></td><td>
+Message: <input type="text" id="message"/></td><td>
+<button disabled="true" id="send" onclick="send();">Send</button>
+</td></tr></table>
+<button onclick="document.getElementById('debug').innerHTML='';">
+Clear log</button>
+<button id="btn1" onclick="start()">Call</button>
+<button id="btn2" onclick="openCanvas()">Canvas</button>
+<button id="btn3" onclick="stop()">Hang Up</button>
+<section>
+  <form id="fileInfo">
+    <input type="file" id="fileInput" name="files"/>
+  </form>
+  <div class="progress">
+    <div class="label">Send progress: </div>
+    <progress id="sendProgress" max="0" value="0"></progress>
+  </div>
+  <div class="progress">
+    <div class="label">Receive progress: </div>
+    <progress id="receiveProgress" max="0" value="0"></progress>
+  </div>
+  <div id="bitrate"></div>
+  <a id="received"></a>
+</section>
+<pre id="videos">
+</pre>
+<pre id="debug">
+</pre>
+<br><hr>
+</body>
+</html>
